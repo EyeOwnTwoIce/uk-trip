@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UK & vuelta · Diario de ruta 2026</title>
+<meta name="description" content="Mapa interactivo del viaje en moto por España, Francia, Inglaterra, Gales, Escocia, Irlanda del Norte e Irlanda. Historia, información extra y localizaciones de cine.">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=9">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <header class="brand">
+      <div class="kicker">Diario de ruta · 2026</div>
+      <h1>UK <em>&amp;</em> vuelta</h1>
+      <p class="sub">6.510 km en moto por siete países, del Ebro a las Highlands y de vuelta por Irlanda.</p>
+      <div class="stats">
+        <div><strong>6.510</strong><span>km</span></div>
+        <div><strong>24</strong><span>días</span></div>
+        <div><strong>7</strong><span>países</span></div>
+        <div><strong>32</strong><span>paradas</span></div>
+      </div>
+      <div class="searchbox">
+        <span class="search-ico">⌕</span>
+        <input id="search" type="search" placeholder="Buscar un lugar, región o tema…" autocomplete="off">
+      </div>
+      <div id="filters" class="filters"></div>
+      <label class="switch"><input type="checkbox" id="onlyFilm"><span class="track"><span class="thumb"></span></span><span class="switch-label">Solo sitios con rodajes</span></label>
+    </header>
+    <div id="list" class="site-list" aria-label="Lista de paradas"></div>
+    <footer class="side-foot">
+      <span id="count">32 paradas</span>
+      <button id="aboutBtn" class="linklike">Sobre esta guía</button>
+    </footer>
+  </aside>
+
+  <main id="map-wrap">
+    <div id="map"></div>
+    <div class="map-top">
+      <button id="playBtn" class="btn primary"><span class="play-ico">▶</span> Recorrer la ruta</button>
+      <button id="fitBtn" class="btn">Ver todo</button>
+    </div>
+    <div class="legend">
+      <div><i class="line solid"></i> Ruta grabada</div>
+      <div><i class="line dashed"></i> Ferry / tramo reconstruido</div>
+      <div><i class="dot"></i> Parada emblemática</div>
+    </div>
+    <div id="days" class="days" aria-label="Etapas del viaje"></div>
+    <div id="hint" class="hint">Haz clic en una parada para leer su historia · ← → para navegar</div>
+  </main>
+
+  <section id="detail" class="detail" aria-hidden="true">
+    <button id="closeBtn" class="close" aria-label="Cerrar">×</button>
+    <div class="detail-scroll">
+      <div class="hero">
+        <img id="heroImg" alt="">
+        <div class="hero-shade"></div>
+        <div class="hero-badges"><span id="heroNum" class="num"></span><span id="heroCountry" class="country"></span></div>
+        <div class="hero-copy">
+          <div id="heroKicker" class="kicker"></div>
+          <h2 id="heroTitle"></h2>
+          <p id="heroHook"></p>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div id="meta" class="meta"></div>
+        <p id="history" class="history"></p>
+        <div class="section-head"><h3>Info extra</h3><span class="rule"></span></div>
+        <ul id="extra" class="extra"></ul>
+        <div class="section-head"><h3>Rodajes y localizaciones</h3><span class="rule"></span></div>
+        <div id="films" class="films"></div>
+        <div class="actions">
+          <a id="mapsLink" class="btn small" target="_blank" rel="noopener">Abrir en Mapas ↗</a>
+          <a id="wikiLink" class="btn small ghost" target="_blank" rel="noopener">Wikipedia ↗</a>
+        </div>
+        <div class="pager">
+          <button id="prevBtn" class="btn small ghost">← Anterior</button>
+          <button id="nextBtn" class="btn small ghost">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="about" class="modal" aria-hidden="true">
+  <div class="modal-card">
+    <button id="aboutClose" class="close" aria-label="Cerrar">×</button>
+    <div class="kicker">Sobre esta guía</div>
+    <h2>Un viaje de 6.510 km</h2>
+    <p>Esta web reúne las paradas emblemáticas del track <em>Trip to UK Oct 2026</em>: 32 lugares en España, Francia, Inglaterra, Gales, Escocia, Irlanda del Norte e Irlanda. Cada ficha incluye un resumen histórico, información práctica y las localizaciones de cine y series más conocidas.</p>
+    <p>El trazado procede del archivo KML original (Komobi/BMW). Los tramos sin GPS —el ferry Calais–Dover, el enlace Dover–Gales, el ferry a Belfast y el ferry Rosslare–Santander— se han reconstruido y aparecen discontinuos en el mapa. Las distancias son las registradas por la app, no una medición propia.</p>
+    <p>Fotografías: Wikimedia Commons (licencias libres; créditos en cada artículo enlazado). Textos: elaboración propia a partir de fuentes históricas y de las localizaciones documentadas. Última actualización: noviembre de 2026.</p>
+    <div class="modal-actions"><button id="aboutOk" class="btn primary">Volver al mapa</button></div>
+  </div>
+</div>
+
+<script src="vendor/leaflet.js"></script>
+<script src="site-data.js?v=8"></script>
+<script src="app.js?v=9"></script>
+</body>
+</html>
